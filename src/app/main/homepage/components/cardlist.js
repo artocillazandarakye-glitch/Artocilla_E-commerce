@@ -1,33 +1,56 @@
-import React from "react";
-import ImageCard from "../../../../components/ui/card";
+import Card from "../../../../components/ui/card";
+
+const products = [
+  {
+    id: 1,
+    title: "Floral Summer Dress",
+    price: 49,
+    image: "https://via.placeholder.com/250x300",
+  },
+  {
+    id: 2,
+    title: "Beige Blazer",
+    price: 75,
+    image: "https://via.placeholder.com/250x300",
+  },
+  {
+    id: 3,
+    title: "White Ruffle Dress",
+    price: 59,
+    image: "https://via.placeholder.com/250x300",
+  },
+  {
+    id: 4,
+    title: "Casual Linen Shirt",
+    price: 35,
+    image: "https://via.placeholder.com/250x300",
+  },
+  {
+    id: 5,
+    title: "Stylish Sunglasses",
+    price: 25,
+    image: "https://via.placeholder.com/250x300",
+  },
+  {
+    id: 6,
+    title: "Brown Leather Bag",
+    price: 130,
+    image: "https://via.placeholder.com/250x300",
+  },
+];
 
 export default function CardList() {
-    return (
-        <div style={containerStyle}>
-            <ImageCard
-            image="https://picsum.photos/400/300?1"
-            title="Mountain View"
-            description="A beautiful mountain landscape."
-        />
-         <ImageCard
-            image="https://picsum.photos/400/300?2"
-            title="Ocean Breeze"
-            description="Relaxing ocean scenery."
-        />
-        <ImageCard
-            image="https://picsum.photos/400/300?3"
-            title="City Lights"
-            description="Night view of the city skyline."
-        />
-         
-        </div>
-    );
-}
-
-const containerStyle = {
-    display: "flex",
-    gap: "20px",
-    justifyContent: "center",
-    flexWrap: "wrap",
-    padding: "40px",
+  return (
+    <div
+      style={{
+        display: "grid",
+        gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+        gap: "20px",
+      }}
+    >
+      {products.map((item) => (
+        <Card key={item.id} {...item} />
+      ))}
+    </div>
+  );
 }

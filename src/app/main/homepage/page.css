@@ -1,0 +1,40 @@
+.homepage-container {
+  padding: 40px;
+  background: #f8f6f3;
+}
+
+.hero-section {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.hero-section h4 {
+  letter-spacing: 2px;
+  color: #777;
+  margin: 0;
+}
+
+.hero-section h1 {
+  font-size: 48px;
+  margin: 10px 0;
+}
+
+.hero-section p {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.shop-button {
+  padding: 12px 30px;
+  background: #a67c52;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.products-section h2 {
+  text-align: center;
+  margin-bottom: 30px;
+}
