@@ -36,7 +36,7 @@ export default function Deal() {
             </div>
           ))}
         </div>
-        <a href="#" style={styles.btn}>Grab the Deal</a>
+        <a href="/shop" style={styles.btn}>Grab the Deal</a>
       </div>
       <div style={styles.right}>
         <img

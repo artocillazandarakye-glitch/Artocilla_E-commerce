@@ -12,11 +12,11 @@ export default function Navbar() {
       </div>
 
       <ul className={`navbar__links ${menuOpen ? 'navbar__links--open' : ''}`}>
-        <li><a href="#" className="navbar__link" onClick={() => setMenuOpen(false)}>Home</a></li>
-        <li><a href="#" className="navbar__link" onClick={() => setMenuOpen(false)}>Collections</a></li>
-        <li><a href="#" className="navbar__link" onClick={() => setMenuOpen(false)}>Products</a></li>
-        <li><a href="#" className="navbar__link" onClick={() => setMenuOpen(false)}>Blog</a></li>
-        <li><a href="#" className="navbar__link" onClick={() => setMenuOpen(false)}>About</a></li>
+        <li><a href="/" className="navbar__link" onClick={() => setMenuOpen(false)}>Home</a></li>
+        <li><a href="/collections" className="navbar__link" onClick={() => setMenuOpen(false)}>Collections</a></li>
+        <li><a href="/products" className="navbar__link" onClick={() => setMenuOpen(false)}>Products</a></li>
+        <li><a href="/blog" className="navbar__link" onClick={() => setMenuOpen(false)}>Blog</a></li>
+        <li><a href="/about" className="navbar__link" onClick={() => setMenuOpen(false)}>About</a></li>
       </ul>
 
       <div className="navbar__icons">
