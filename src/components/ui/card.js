@@ -30,7 +30,8 @@ export function CollectionCard({ title, description, image, size = 'small' }) {
       <div className="collection-card__overlay">
         <h3 className="collection-card__title">{title}</h3>
         <p className="collection-card__desc">{description}</p>
-        <a href="#" className="collection-card__link">Shop Now →</a>
+        {/* eslint-disable-next-line */}
+        <button className="collection-card__link">Shop Now →</button>
       </div>
     </div>
   );
@@ -47,7 +48,8 @@ export function BlogCard({ title, date, excerpt, image, category }) {
         <p className="blog-card__date">{date}</p>
         <h3 className="blog-card__title">{title}</h3>
         <p className="blog-card__excerpt">{excerpt}</p>
-        <a href="#" className="blog-card__link">Read More →</a>
+        {/* eslint-disable-next-line */}
+        <button className="blog-card__link">Read More →</button>
       </div>
     </div>
   );
