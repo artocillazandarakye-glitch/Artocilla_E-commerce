@@ -1,0 +1,126 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Jost:wght@300;400;500;600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --cream:       #f5f0eb;
+  --cream-dark:  #ede7df;
+  --brown-dark:  #1e1409;
+  --brown-mid:   #2c1f0e;
+  --brown-muted: #6b5744;
+  --green:       #4a7c59;
+  --green-dark:  #3a6347;
+  --border:      #ddd5c8;
+  --white:       #ffffff;
+}
+
+body {
+  font-family: 'Jost', sans-serif;
+  color: var(--brown-dark);
+  background-color: var(--cream);
+  line-height: 1.6;
+}
+
+a { text-decoration: none; }
+button { cursor: pointer; font-family: 'Jost', sans-serif; }
+img { max-width: 100%; }
+
+/* ===== PRODUCT CARD LIST — 4 columns default ===== */
+.product-card-list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+/* ===== HERO RESPONSIVE ===== */
+@media (max-width: 768px) {
+  section[style*="90vh"] {
+    height: 70vh !important;
+  }
+}
+
+/* ===== COLLECTIONS RESPONSIVE ===== */
+@media (max-width: 1024px) {
+  .collection-card-list {
+    grid-template-columns: 1fr 1fr !important;
+  }
+  .collection-card--large {
+    grid-column: 1 / -1 !important;
+    grid-row: auto !important;
+  }
+}
+@media (max-width: 600px) {
+  .collection-card-list {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* ===== PRODUCTS RESPONSIVE ===== */
+@media (max-width: 1024px) {
+  .product-card-list { grid-template-columns: repeat(3, 1fr) !important; }
+}
+@media (max-width: 768px) {
+  .product-card-list { grid-template-columns: repeat(2, 1fr) !important; }
+}
+@media (max-width: 480px) {
+  .product-card-list { grid-template-columns: 1fr !important; }
+}
+
+/* ===== DEAL SECTION ===== */
+@media (max-width: 768px) {
+  .deal-section {
+    flex-direction: column !important;
+    padding: 3rem 1.5rem !important;
+    gap: 2rem !important;
+  }
+}
+
+/* ===== BLOG ===== */
+@media (max-width: 768px) {
+  .blog-card-list { grid-template-columns: 1fr !important; }
+}
+
+/* ===== FOOTER RESPONSIVE ===== */
+@media (max-width: 1024px) {
+  footer > div:first-child {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 2rem !important;
+  }
+}
+@media (max-width: 640px) {
+  footer > div:first-child {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 1.5rem !important;
+  }
+}
+@media (max-width: 480px) {
+  footer > div:first-child {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+  }
+  footer > div:last-child {
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    gap: 0.5rem !important;
+  }
+}
+
+/* ===== GENERAL PADDING ===== */
+@media (max-width: 768px) {
+  section, footer {
+    padding-left: 1.5rem !important;
+    padding-right: 1.5rem !important;
+  }
+}
+@media (max-width: 480px) {
+  section, footer {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+}
