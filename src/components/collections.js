@@ -23,7 +23,6 @@ const collectionsData = [
   {
     title: "Gift Cards",
     description: "The perfect gift for everyone",
-    // Fixed: working gift/shopping image
     image: 'https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=800&q=80',
     size: 'small',
   },

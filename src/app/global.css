@@ -29,11 +29,6 @@ a { text-decoration: none; }
 button { cursor: pointer; font-family: 'Jost', sans-serif; }
 img { max-width: 100%; }
 
-
-/* ============================================================
-   HERO
-   ============================================================ */
-
 @media (max-width: 1024px) {
   .hero__section { height: 80vh !important; }
   .hero__content { padding: 0 3rem !important; }
@@ -65,11 +60,6 @@ img { max-width: 100%; }
     width: 100% !important;
   }
 }
-
-
-/* ============================================================
-   DEAL SECTION
-   ============================================================ */
 
 @media (max-width: 1280px) {
   .deal__section { gap: 3rem !important; padding: 4rem 3rem !important; }
@@ -107,11 +97,6 @@ img { max-width: 100%; }
   }
 }
 
-
-/* ============================================================
-   COLLECTIONS
-   ============================================================ */
-
 @media (max-width: 1024px) {
   .collection-card-list {
     grid-template-columns: 1fr 1fr !important;
@@ -130,11 +115,6 @@ img { max-width: 100%; }
   .collection-card--large .collection-card__img { min-height: 260px !important; }
   .collection-card__img                         { min-height: 200px !important; }
 }
-
-
-/* ============================================================
-   PRODUCTS
-   ============================================================ */
 
 .product-card-list {
   display: grid;
@@ -174,11 +154,6 @@ img { max-width: 100%; }
   .product-card__btn { width: 100% !important; text-align: center !important; }
 }
 
-
-/* ============================================================
-   BLOG
-   ============================================================ */
-
 .blog-card-list {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -193,11 +168,6 @@ img { max-width: 100%; }
   .blog-card-list { grid-template-columns: 1fr !important; gap: 1rem !important; }
   .blog-card__img { height: 180px !important; }
 }
-
-
-/* ============================================================
-   FOOTER BASE STYLES
-   ============================================================ */
 
 .footer__root {
   background-color: #1e1409;
@@ -328,18 +298,11 @@ img { max-width: 100%; }
   color: #4a3828;
 }
 
-
-/* ============================================================
-   FOOTER RESPONSIVE
-   ============================================================ */
-
-/* Laptop (≤ 1280px) */
 @media (max-width: 1280px) {
   .footer__root { padding: 4rem 3rem 2rem; }
   .footer__grid { gap: 2rem; }
 }
 
-/* Tablet / iPad (≤ 1024px) */
 @media (max-width: 1024px) {
   .footer__root { padding: 4rem 2.5rem 2rem !important; }
   .footer__grid {
@@ -354,7 +317,6 @@ img { max-width: 100%; }
   .footer__about { max-width: 100% !important; }
 }
 
-/* Small Tablet (≤ 768px) */
 @media (max-width: 768px) {
   .footer__root { padding: 3rem 1.5rem 2rem !important; }
   .footer__grid {
@@ -367,7 +329,6 @@ img { max-width: 100%; }
   .footer__brand-name { font-size: 1.2rem !important; }
 }
 
-/* Mobile (≤ 480px) */
 @media (max-width: 480px) {
   .footer__root { padding: 2.5rem 1rem 1.5rem !important; }
   .footer__grid {
@@ -387,21 +348,10 @@ img { max-width: 100%; }
   }
 }
 
-/* Small Mobile (≤ 360px) */
 @media (max-width: 360px) {
   .footer__grid         { grid-template-columns: 1fr !important; }
   .footer__col--brand   { grid-column: 1 !important; }
 }
-
-
-/* ============================================================
-   GENERAL SECTION PADDING
-   Desktop  5rem
-   Laptop   3rem   (≤ 1280px)
-   Tablet   2.5rem (≤ 1024px)
-   Mobile   1.5rem (≤ 768px)
-   S.Mobile 1.25rem(≤ 480px)
-   ============================================================ */
 
 @media (max-width: 1280px) {
   section { padding-left: 3rem !important; padding-right: 3rem !important; }

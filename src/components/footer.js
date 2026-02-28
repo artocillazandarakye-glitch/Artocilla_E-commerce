@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+
 const linkStyle = {
   color: "#8a8070",
   fontSize: "14px",
@@ -13,22 +15,44 @@ const linkStyle = {
 };
 
 const Footer = () => {
+  const [isMobile, setIsMobile] = useState(false);
+  const [isTablet, setIsTablet] = useState(false);
+
+  useEffect(() => {
+    const checkSize = () => {
+      setIsMobile(window.innerWidth < 480);
+      setIsTablet(window.innerWidth >= 480 && window.innerWidth < 768);
+    };
+    checkSize();
+    window.addEventListener("resize", checkSize);
+    return () => window.removeEventListener("resize", checkSize);
+  }, []);
+
+  const gridStyle = isMobile
+    ? { gridTemplateColumns: "1fr 1fr", gap: "32px", padding: "40px 20px 32px" }
+    : isTablet
+    ? { gridTemplateColumns: "1fr 1fr", gap: "36px", padding: "48px 32px 36px" }
+    : { gridTemplateColumns: "2fr 1fr 1fr 1fr", gap: "48px", padding: "64px 80px 48px" };
+
+  const bottomBarStyle = isMobile
+    ? { padding: "20px", flexDirection: "column", alignItems: "flex-start", gap: "8px" }
+    : isTablet
+    ? { padding: "20px 32px" }
+    : { padding: "24px 80px" };
+
   return (
     <footer style={{ backgroundColor: "#1a1a18", color: "#d4c9b8", fontFamily: "'Georgia', serif" }}>
-      {/* Main Footer Content */}
       <div style={{
-        padding: "64px 80px 48px",
         display: "grid",
-        gridTemplateColumns: "2fr 1fr 1fr 1fr",
-        gap: "48px",
+        ...gridStyle,
       }}>
-        {/* Brand Column */}
-        <div>
-          <p style={{ fontSize: "14px", lineHeight: "1.8", color: "#8a8070", maxWidth: "280px", fontFamily: "sans-serif", fontWeight: "300", margin: "0 0 28px 0" }}>
+  
+        <div style={isMobile ? { gridColumn: "1 / -1" } : {}}>
+          <p style={{ fontSize: "14px", lineHeight: "1.8", color: "#8a8070", maxWidth: "320px", fontFamily: "sans-serif", fontWeight: "300", margin: "0 0 24px 0" }}>
             Timeless fashion crafted for the modern soul. We believe in beautiful simplicity — clothes that move with you through every moment.
           </p>
-          {/* Social Icons */}
-          <div style={{ display: "flex", gap: "12px" }}>
+
+          <div style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
             {[
               {
                 name: "Facebook",
@@ -81,6 +105,7 @@ const Footer = () => {
                   background: "transparent",
                   cursor: "pointer",
                   transition: "all 0.25s ease",
+                  flexShrink: 0,
                 }}
                 onMouseEnter={e => {
                   e.currentTarget.style.borderColor = "#f0ead6";
@@ -99,14 +124,13 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Shop Column */}
         <div>
-          <h4 style={{ fontSize: "11px", letterSpacing: "3px", color: "#b8956a", marginBottom: "24px", fontFamily: "sans-serif", textTransform: "uppercase", fontWeight: "400" }}>
+          <h4 style={{ fontSize: "11px", letterSpacing: "3px", color: "#b8956a", marginBottom: "20px", fontFamily: "sans-serif", textTransform: "uppercase", fontWeight: "400" }}>
             Shop
           </h4>
           <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
             {["Women", "Men", "Kids", "Footwear", "Accessories", "Gift Cards", "New Arrivals", "Best Sellers"].map(item => (
-              <li key={item} style={{ marginBottom: "12px" }}>
+              <li key={item} style={{ marginBottom: "10px" }}>
                 <button
                   style={linkStyle}
                   onMouseEnter={e => e.currentTarget.style.color = "#f0ece4"}
@@ -119,14 +143,13 @@ const Footer = () => {
           </ul>
         </div>
 
-        {/* Help Column */}
         <div>
-          <h4 style={{ fontSize: "11px", letterSpacing: "3px", color: "#b8956a", marginBottom: "24px", fontFamily: "sans-serif", textTransform: "uppercase", fontWeight: "400" }}>
+          <h4 style={{ fontSize: "11px", letterSpacing: "3px", color: "#b8956a", marginBottom: "20px", fontFamily: "sans-serif", textTransform: "uppercase", fontWeight: "400" }}>
             Help
           </h4>
           <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
             {["FAQ", "Shipping & Returns", "Size Guide", "Order Tracking", "Contact Us", "Store Locator", "Loyalty Program"].map(item => (
-              <li key={item} style={{ marginBottom: "12px" }}>
+              <li key={item} style={{ marginBottom: "10px" }}>
                 <button
                   style={linkStyle}
                   onMouseEnter={e => e.currentTarget.style.color = "#f0ece4"}
@@ -139,14 +162,13 @@ const Footer = () => {
           </ul>
         </div>
 
-        {/* Company Column */}
         <div>
-          <h4 style={{ fontSize: "11px", letterSpacing: "3px", color: "#b8956a", marginBottom: "24px", fontFamily: "sans-serif", textTransform: "uppercase", fontWeight: "400" }}>
+          <h4 style={{ fontSize: "11px", letterSpacing: "3px", color: "#b8956a", marginBottom: "20px", fontFamily: "sans-serif", textTransform: "uppercase", fontWeight: "400" }}>
             Company
           </h4>
           <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
             {["About Us", "Blog", "Careers", "Press", "Sustainability", "Privacy Policy", "Terms of Service"].map(item => (
-              <li key={item} style={{ marginBottom: "12px" }}>
+              <li key={item} style={{ marginBottom: "10px" }}>
                 <button
                   style={linkStyle}
                   onMouseEnter={e => e.currentTarget.style.color = "#f0ece4"}
@@ -160,20 +182,18 @@ const Footer = () => {
         </div>
       </div>
 
-      {/* Bottom Bar */}
       <div style={{
         borderTop: "1px solid #2e2820",
-        padding: "24px 80px",
         display: "flex",
         alignItems: "center",
         justifyContent: "space-between",
         flexWrap: "wrap",
-        gap: "16px",
+        gap: "8px",
+        ...bottomBarStyle,
       }}>
         <p style={{ fontSize: "13px", color: "#9a8e80", fontFamily: "sans-serif", margin: 0 }}>
           © 2026 Apparel. All rights reserved.
         </p>
-
         <p style={{ fontSize: "13px", color: "#9a8e80", fontFamily: "sans-serif", margin: 0 }}>
           Made with ♥ in the Philippines
         </p>

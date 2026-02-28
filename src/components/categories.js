@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 const categoryData = [
   { label: 'Women', image: 'https://images.unsplash.com/photo-1483985988355-763728e1935b?w=400&q=80' },
@@ -10,15 +10,53 @@ const categoryData = [
 ];
 
 export default function Categories() {
+  const [screenWidth, setScreenWidth] = useState(
+    typeof window !== 'undefined' ? window.innerWidth : 1024
+  );
+
+  useEffect(() => {
+    const handleResize = () => setScreenWidth(window.innerWidth);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  const isMobile = screenWidth < 480;
+  const isTablet = screenWidth >= 480 && screenWidth < 768;
+
+
+  const gridStyle = {
+    display: 'grid',
+    gap: isMobile ? '0.75rem' : '1rem',
+    gridTemplateColumns: isMobile
+      ? 'repeat(2, 1fr)'
+      : isTablet
+      ? 'repeat(3, 1fr)'
+      : 'repeat(6, 1fr)',
+  };
+
+  const cardHeight = isMobile ? '160px' : isTablet ? '220px' : '300px';
+
+  const sectionPadding = isMobile
+    ? '3rem 1.25rem'
+    : isTablet
+    ? '4rem 2rem'
+    : '5rem 4rem';
+
   return (
-    <section style={styles.section}>
+    <section style={{ ...styles.section, padding: sectionPadding }}>
       <p style={styles.eyebrow}>BROWSE BY</p>
-      <h2 style={styles.heading}>Shop by Category</h2>
-      <div style={styles.grid}>
+      <h2 style={{
+        ...styles.heading,
+        fontSize: isMobile ? '1.5rem' : '2rem',
+        marginBottom: isMobile ? '1.5rem' : '2.5rem',
+      }}>
+        Shop by Category
+      </h2>
+      <div style={gridStyle}>
         {categoryData.map((cat, i) => (
           <div
             key={i}
-            style={styles.card}
+            style={{ ...styles.card, height: cardHeight }}
             onMouseEnter={e => {
               e.currentTarget.querySelector('img').style.transform = 'scale(1.07)';
             }}
@@ -28,7 +66,13 @@ export default function Categories() {
           >
             <img src={cat.image} alt={cat.label} style={styles.img} />
             <div style={styles.overlay}>
-              <p style={styles.label}>{cat.label}</p>
+              <p style={{
+                ...styles.label,
+                fontSize: isMobile ? '0.75rem' : '1.2rem',
+                letterSpacing: isMobile ? '0.08em' : '0.1em',
+              }}>
+                {cat.label}
+              </p>
             </div>
           </div>
         ))}
@@ -39,7 +83,6 @@ export default function Categories() {
 
 const styles = {
   section: {
-    padding: '5rem 4rem',
     backgroundColor: '#f5f0eb',
     textAlign: 'center',
   },
@@ -51,26 +94,17 @@ const styles = {
     fontFamily: '"Jost", sans-serif',
   },
   heading: {
-    fontSize: '2rem',
     fontWeight: '700',
     color: '#1e1409',
-    marginBottom: '2.5rem',
     fontFamily: '"Playfair Display", Georgia, serif',
   },
-  grid: {
-    display: 'flex',
-    justifyContent: 'center',
-    flexWrap: 'wrap',
-    gap: '1.5rem',
-  },
   card: {
-    width: '220px',
-    height: '300px',
     borderRadius: '2px',
     overflow: 'hidden',
     position: 'relative',
     cursor: 'pointer',
     boxShadow: '0 6px 20px rgba(30,20,9,0.15)',
+    width: '100%',
   },
   img: {
     width: '100%',
@@ -86,13 +120,11 @@ const styles = {
     display: 'flex',
     alignItems: 'flex-end',
     justifyContent: 'center',
-    paddingBottom: '1.2rem',
+    paddingBottom: '1rem',
   },
   label: {
     color: '#f5f0eb',
     fontWeight: '500',
-    fontSize: '1.2rem',
-    letterSpacing: '0.1em',
     textTransform: 'uppercase',
     fontFamily: '"Jost", sans-serif',
     textShadow: '0 1px 4px rgba(0,0,0,0.4)',
