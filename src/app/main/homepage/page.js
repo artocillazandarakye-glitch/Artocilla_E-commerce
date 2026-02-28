@@ -16,7 +16,7 @@ export default function Homepage() {
       <Collections />
       <Products />
       <Deal />
-      <Footer />
+ 
     </>
   );
 }
